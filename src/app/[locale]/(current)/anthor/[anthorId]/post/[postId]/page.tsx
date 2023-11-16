@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductDetailPage from "@/pages/ProductDetailPage";
-import {Dialog} from '@mui/material'
 import BackIcon from "@/components/BackIcon";
 
 const Page = async ({params: {postId}}: {params: {postId: string}}) => {

@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { IntlErrorCode, NextIntlClientProvider, IntlError, AbstractIntlMessages } from "next-intl";
+import { NextIntlClientProvider,  AbstractIntlMessages } from "next-intl";
 import { notFound } from "next/navigation";
 
 const inter = Inter({ subsets: ['latin'] })
