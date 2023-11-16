@@ -3,12 +3,8 @@ import React, { useCallback, useEffect } from 'react';
 import ProductCard from "@/components/ProductCard";
 import { useRouter } from 'next/navigation';
 import { Stack, Typography } from "@mui/material";
-import { useTranslations } from 'next-intl';
 
 const AuthorPostListPage = ({products, userId}: { products: Post[], userId: string }) => {
-
-  const t = useTranslations();
-
 
   const {push} = useRouter();
 
