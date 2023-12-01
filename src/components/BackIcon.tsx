@@ -1,24 +1,35 @@
 "use client";
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
-const BackIcon = ({isModal}: {isModal: boolean}) => {
-  
-  const { replace, back } = useRouter();
+const BackIcon = ({
+  isModal,
+  path = "/",
+}: {
+  isModal: boolean;
+  path?: string;
+}) => {
+  const router = useRouter();
 
-  console.log({isModal})
+  console.log({ isModal });
 
   const handleBack = useCallback(() => {
     if (isModal) {
-      back()
+      router.back();
     } else {
-      replace('/marketplace');
+      router.replace(path);
     }
-  }, [back, isModal, replace])
+  }, [isModal, path, router]);
 
   return (
-    <Button variant="contained" sx={{ textTransform: 'unset' }} onClick={handleBack}>Go back</Button>
+    <Button
+      variant="contained"
+      sx={{ textTransform: "unset" }}
+      onClick={handleBack}
+    >
+      Go back
+    </Button>
   );
 };
 

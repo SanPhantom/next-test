@@ -1,13 +1,16 @@
 "use client";
-import React, { useCallback } from "react";
+
+import ProductCard from "@/components/ProductCard";
 import UserCard from "@/components/UserCard";
-import { useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
-const MarketplacePage = ({ products }: { products: User[] }) => {
-  const t = useTranslations();
+interface PostsPageProps {
+  products: Post[];
+}
 
+const PostsPage = ({ products }: PostsPageProps) => {
   const router = useRouter();
 
   const handleClickItem = useCallback(
@@ -22,15 +25,11 @@ const MarketplacePage = ({ products }: { products: User[] }) => {
     <Stack sx={{ gap: 2 }}>
       <Stack sx={{ padding: 2, gap: 2 }}>
         {products.map((user) => (
-          <UserCard
-            user={user}
-            key={user.id}
-            onClick={() => handleClickItem(user)}
-          />
+          <ProductCard post={user} key={user.id} showAuthor />
         ))}
       </Stack>
     </Stack>
   );
 };
 
-export default MarketplacePage;
+export default PostsPage;

@@ -1,36 +1,38 @@
 "use client";
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
-import { useRouter } from 'next/navigation';
-import { Stack, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { Button, Divider, Stack, Typography } from "@mui/material";
 
-const AuthorPostListPage = ({products, userId}: { products: Post[], userId: string }) => {
-
-  const {push} = useRouter();
-
-
-  const handleClickItem = useCallback((product: Post) => {
-    push(`/anthor/${product.userId}/post/${product.id}`)
-  }, [push])
-
-  useEffect(() => {
-    console.log({products})
-  }, [products]);
+const AuthorPostListPage = ({
+  products,
+  userId,
+}: {
+  products: Post[];
+  userId: string;
+}) => {
+  const { push } = useRouter();
 
   return (
-    <Stack sx={{gap: 2}}>
-      <Typography>Author:  {userId}</Typography>
-        <Stack sx={{padding: 2, gap: 2}}>
-          {products.map((product) => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              onClick={() => handleClickItem(product)}
-            />
-          ))}
-        </Stack>
-    </Stack>
+    <Stack sx={{ gap: 2, alignItems: "center", p: 2 }}>
+      <Typography>Author: {userId}</Typography>
 
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => push("/shops")}
+      >
+        to shop
+      </Button>
+
+      <Divider sx={{ borderColor: "#ffffff", width: "100%", mx: -2 }} />
+
+      <Stack sx={{ gap: 1.5 }}>
+        {products.map((product) => {
+          return <ProductCard key={product.id} post={product} />;
+        })}
+      </Stack>
+    </Stack>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import AuthorPostListPage from "@/pages/AuthorPostList";
 import BackIcon from "@/components/BackIcon";
+import { Dialog, Stack } from "@mui/material";
 
 const AuthorPage = async ({
   params: { anthorId },
@@ -18,12 +19,11 @@ const AuthorPage = async ({
     }
   );
   const posts = await res.json();
-  console.log("fetch ===>", anthorId);
   return (
-    <>
-      <BackIcon isModal={false} path="/marketplace" />
+    <Dialog open fullScreen sx={{ height: "100vh" }}>
+      <BackIcon isModal={true} path="/marketplace" />
       <AuthorPostListPage products={posts} userId={anthorId} />
-    </>
+    </Dialog>
   );
 };
 
